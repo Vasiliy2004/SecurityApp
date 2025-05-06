@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <meta charset="UTF-8">
+    <title>Все продукты</title>
+</head>
+<body>
+Все продукты должны быть тут
+
+<div>
+    <table >
+        <tr>
+            <td>product_id</td>
+            <td>name</td>
+            <td>category_id</td>
+            <td>price</td>
+            <td>quantity</td>
+            <td>supplier_id</td>
+            <td>Редактировать</td>
+
+
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.getId()}"></td>
+            <td th:text="${product.getName()}"></td>
+            <td th:text="${product.getCategory_id()}"></td>
+            <td th:text="${product.getPrice()}"></td>
+            <td th:text="${product.getQuantity()}"></td>
+            <td th:text="${product.getSupplier_id()}"></td>
+            <td>
+                <form th:method="GET" th:action="@{/products/{id}/edit(id=${product.getId()})}">
+                <input type="submit" value="Редактировать"/>
+            </form></td>
+
+        </tr>
+    </table>
+
+</div>
+<form th:method="GET" th:action="@{/products/new}">
+    <button>Созадать нового</button>
+</form>
+</body>
+</html>

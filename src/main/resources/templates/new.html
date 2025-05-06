@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>New Person</title>
+</head>
+<body>
+
+<form th:method="GET" th:action="@{/products/new/newproduct}" th:object="${product}">
+  <label for="name">Введите Название</label>
+  <input type="text" th:field="*{name}"  id="name"/>
+  <div style="color:red" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+  <br/>
+
+  <label for="category_id">Enter category_id</label>
+  <input type="text" th:field="*{category_id}"  id="category_id"/>
+  <div style="color:red" th:if="${#fields.hasErrors('category_id')}" th:errors="*{category_id}">category_id error</div>
+
+  <label for="price">Enter price</label>
+  <input type="text" th:field="*{price}"  id="price"/>
+  <div style="color:red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">error price</div>
+
+  <label for="quantity">Enter quantity</label>
+  <input type="text" th:field="*{quantity}"  id="quantity"/>
+  <div style="color:red" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}">quantity error</div>
+
+  <label for="supplier_id">Enter supplier_id</label>
+  <input type="text" th:field="*{supplier_id}"  id="supplier_id"/>
+  <div style="color:red" th:if="${#fields.hasErrors('supplier_id')}" th:errors="*{supplier_id}">supplier_id error</div>
+
+
+  <input type="submit" value="Создать ТОВАР!!!!!!!!">
+</form>
+
+</body>
+</html>
