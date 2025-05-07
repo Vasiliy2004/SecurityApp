@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.vasa.SecurityApp.services.UserRegistrationDto;
 import ru.vasa.SecurityApp.services.UserService;
-/*
+
 @Controller
 @RequestMapping("/register")
 public class RegisterController {
@@ -17,14 +17,14 @@ public class RegisterController {
     private final UserService userService;
 
     @Autowired
-    public RegistrationController(UserService userService) {
+    public RegisterController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping
     public String showRegistrationForm(Model model) {
         model.addAttribute("user", new UserRegistrationDto());
-        return "registration";
+        return "register";
     }
 
     @PostMapping
@@ -37,4 +37,3 @@ public class RegisterController {
     }
 }
 
- */

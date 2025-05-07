@@ -33,13 +33,20 @@
                 <form th:method="GET" th:action="@{/products/{id}/edit(id=${product.getId()})}">
                 <input type="submit" value="Редактировать"/>
             </form></td>
+            <td>
+                <form th:method="GET" th:action="@{/products/{id}/delete(id=${product.getId()})}">
+                <input type="submit" value="Удалить"/>
+            </form></td>
+
 
         </tr>
     </table>
 
 </div>
 <form th:method="GET" th:action="@{/products/new}">
-    <button>Созадать нового</button>
+    <button>Добавить продукт</button>
 </form>
+
+
 </body>
 </html>

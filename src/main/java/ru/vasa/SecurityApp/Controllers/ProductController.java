@@ -84,4 +84,11 @@ public class ProductController {
         System.out.println("ПЕРЕКИНУЛ НА НЕВ");
         return "/new";
     }
+
+    @GetMapping("/{id}/delete")
+    public String delete(@PathVariable("id") int id) {
+        System.out.println("DELETE "+ id);
+        productDAO.delete(id);
+        return "redirect:/products/allproduct";
+    }
 }

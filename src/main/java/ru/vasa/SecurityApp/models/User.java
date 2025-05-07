@@ -1,7 +1,7 @@
 package ru.vasa.SecurityApp.models;
 
 import jakarta.persistence.*;
-/*
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -61,7 +61,15 @@ public class User {
         this.role = role;
     }
 
-    // Геттеры и сеттеры
-    // Конструкторы
+    public User(Long id, String username, String password, String email, String role) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+    }
+
+    public User() {
+    }
+
 }
-*/

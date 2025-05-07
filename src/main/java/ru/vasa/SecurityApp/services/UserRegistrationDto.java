@@ -1,5 +1,5 @@
 package ru.vasa.SecurityApp.services;
-/*
+
 public class UserRegistrationDto {
     private String username;
     private String password;
@@ -33,4 +33,3 @@ public class UserRegistrationDto {
     }
 }
 
- */

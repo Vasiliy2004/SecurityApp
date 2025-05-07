@@ -35,7 +35,7 @@ public class ProductDAO {
         return jdbcTemplate.query("SELECT * FROM Products", new BeanPropertyRowMapper<>(Product.class));
     }
     public void delete(int id) {
-        jdbcTemplate.update("DELETE  FROM Products WHERE product_id=?",id);
+        jdbcTemplate.update("DELETE  FROM Products WHERE id=?",id);
     }
 
     public Optional<Product> getProductByName(String fullname) {
