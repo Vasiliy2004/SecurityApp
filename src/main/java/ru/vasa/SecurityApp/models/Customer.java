@@ -7,8 +7,6 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Customer{
 
     int id;
-    @NotEmpty(message = "Name shoud not Empty")
-    @Size(min=2,max=30,message = "Massage shod be 2-30")
     String name;
     String contact_person;
     String email;

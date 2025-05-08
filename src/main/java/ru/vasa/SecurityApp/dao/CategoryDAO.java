@@ -22,7 +22,7 @@ public class CategoryDAO {
 
     public void update(int id, Category category) {
 
-        jdbcTemplate.update("UPDATE Categories SET name=?, description=?WHERE id=?",
+        jdbcTemplate.update("UPDATE Categories SET name=?, description=? WHERE id=?",
                 category.getName(),
                 category.getDescription(),
                 id);
@@ -33,7 +33,7 @@ public class CategoryDAO {
         return jdbcTemplate.query("SELECT * FROM Categories", new BeanPropertyRowMapper<>(Category.class));
     }
     public void delete(int id) {
-        jdbcTemplate.update("DELETE  FROM Products WHERE id=?",id);
+        jdbcTemplate.update("DELETE  FROM Categories WHERE id=?",id);
     }
 
 

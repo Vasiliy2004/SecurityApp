@@ -22,10 +22,10 @@ public class OrderDAO {
 
     public void update(int id, Order order) {
 
-        jdbcTemplate.update("UPDATE Orders SET order_date=?, customer_id=?, status=? WHERE id=?",
+        jdbcTemplate.update("UPDATE Orders SET order_date=?, customer_id=?, count=? WHERE id=?",
                 order.getOrder_date(),
                 order.getCustomer_id(),
-                order.getStatus(),
+                order.getCount(),
                 id);
 
     }
@@ -48,10 +48,10 @@ public class OrderDAO {
 
 
     public void save(Order order) {
-        jdbcTemplate.update("INSERT INTO Orders (order_date, customer_id,status) VALUES(?,?,?)",
+        jdbcTemplate.update("INSERT INTO Orders (order_date, customer_id,count) VALUES(?,?,?)",
                 order.getOrder_date(),
                 order.getCustomer_id(),
-                order.getStatus()
+                order.getCount()
                 );
     }
 }

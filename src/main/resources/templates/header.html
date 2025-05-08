@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Fragment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --text-color: #2b2d42;
+            --light-color: #f8f9fa;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+        }
+
+        .nav-container {
+            width: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            width: 100%;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 1rem;
+            flex: 1;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: var(--secondary-color);
+        }
+
+        .nav-links a.active {
+            background: var(--secondary-color);
+            border-bottom: 3px solid white;
+        }
+
+        .nav-links a i {
+            font-size: 1.2rem;
+        }
+
+        .user-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-actions a {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .user-actions a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-wrap: wrap;
+            }
+
+            .nav-links a {
+                flex: 1 0 50%;
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .top-bar {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links a {
+                flex: 1 0 100%;
+            }
+
+            .logo span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Фрагмент header -->
+<header th:fragment="header">
+    <div class="top-bar">
+        <a href="/" class="logo">
+            <i class="fas fa-store"></i>
+            <span>MarketPro</span>
+        </a>
+    </div>
+
+    <div class="nav-container">
+        <div class="nav-links">
+            <a th:href="@{/products/allproduct}">
+                <i class="fas fa-box-open"></i>
+                Продукты
+            </a>
+            <a th:href="@{/categories/allcategories}">
+                <i class="fas fa-tags"></i>
+                Категории
+            </a>
+            <a th:href="@{/suppliers/allsuppliers}">
+                <i class="fas fa-truck"></i>
+                Поставщики
+            </a>
+            <a th:href="@{/customers/allcustomers}">
+                <i class="fas fa-users"></i>
+                Покупатели
+            </a>
+            <a th:href="@{/orders/allorders}">
+                <i class="fas fa-clipboard-list"></i>
+                Заказы
+            </a>
+        </div>
+    </div>
+</header>
+</body>
+</html>

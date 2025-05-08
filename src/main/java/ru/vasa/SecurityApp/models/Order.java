@@ -7,19 +7,15 @@ import java.util.Date;
 
 public class Order {
     int id;
-    @NotEmpty(message = "Name shoud not Empty")
-    @Size(min=2,max=30,message = "Massage shod be 2-30")
-    String name;
-    Date order_date;
+    String order_date;
     int customer_id;
-    String status;
+    int count;
 
-    public Order(int id, String status, int customer_id, Date order_date, String name) {
+    public Order(int id, int count, int customer_id, String order_date) {
         this.id = id;
-        this.status = status;
+        this.count = count;
         this.customer_id = customer_id;
         this.order_date = order_date;
-        this.name = name;
     }
 
     public Order() {
@@ -33,19 +29,13 @@ public class Order {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public Date getOrder_date() {
+    public String getOrder_date() {
         return order_date;
     }
 
-    public void setOrder_date(Date order_date) {
+    public void setOrder_date(String order_date) {
         this.order_date = order_date;
     }
 
@@ -57,12 +47,12 @@ public class Order {
         this.customer_id = customer_id;
     }
 
-    public String getStatus() {
-        return status;
+    public int getCount() {
+        return count;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setCount(int count) {
+        this.count = count;
     }
 }
 

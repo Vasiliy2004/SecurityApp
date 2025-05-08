@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Supplier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+
+<div class="container py-4">
+    <div class="supplier-form">
+        <div class="supplier-avatar" th:text="${supplier.getName().substring(0,1).toUpperCase()}"></div>
+
+        <h2 class="form-header text-center">
+            <i class="fas fa-truck"></i>
+            Edit Supplier
+        </h2>
+
+        <form th:method="GET" th:action="@{/suppliers/{id_supplier}(id_supplier=${supplier.getId()})}" th:object="${supplier}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Supplier Name</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-building"></i></span>
+                    <input type="text" th:field="*{name}" id="name" class="form-control" placeholder="Enter supplier name">
+                </div>
+                <div class="error-message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+
+            <div class="mb-3">
+                <label for="contact_person" class="form-label">Contact Person</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                    <input type="text" th:field="*{contact_person}" id="contact_person" class="form-control" placeholder="Enter contact person">
+                </div>
+                <div class="error-message" th:if="${#fields.hasErrors('contact_person')}" th:errors="*{contact_person}"></div>
+            </div>
+
+            <div class="mb-4">
+                <label for="phone" class="form-label">Phone Number</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                    <input type="tel" th:field="*{phone}" id="phone" class="form-control" placeholder="Enter phone number">
+                </div>
+                <div class="error-message" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></div>
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a th:href="@{/suppliers/allsuppliers}" class="btn btn-outline">
+                    <i class="fas fa-arrow-left me-2"></i> Back to Suppliers
+                </a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save me-2"></i> Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

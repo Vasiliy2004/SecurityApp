@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="~{header :: header}"></div>
+    <title>New Order</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="order-form">
+        <h2 class="form-title">Create New Order</h2>
+
+        <form th:method="GET" th:action="@{/orders/new/neworder}" th:object="${order}">
+            <div class="mb-3">
+                <label for="order_date" class="form-label">Order Date</label>
+                <input type="date" class="form-control" th:field="*{order_date}" id="order_date">
+                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('order_date')}" th:errors="*{order_date}">
+                    Please provide a valid date
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="customer_id" class="form-label">Customer ID</label>
+                <input type="number" class="form-control" th:field="*{customer_id}" id="customer_id">
+                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('customer_id')}" th:errors="*{customer_id}">
+                    Please provide a valid customer ID
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="count" class="form-label">Count</label>
+                <input type="number" class="form-control" th:field="*{count}" id="count">
+                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('count')}" th:errors="*{count}">
+                    Please provide a valid count
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-submit mt-4">
+                Create Order
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

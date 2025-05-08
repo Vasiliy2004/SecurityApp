@@ -36,7 +36,7 @@ public class ProductController {
         return "hello";
     }
 
-    @GetMapping("/allproduct")
+    @GetMapping({"/allproduct","/"})
     public String makeAdminPage(Model model) {
 
         model.addAttribute("products", productDAO.index());
@@ -69,7 +69,7 @@ public class ProductController {
     @GetMapping("/new/newproduct")
     public String create(@ModelAttribute("product") @Valid Product product,
                          BindingResult bindingResult) {
-        System.out.println("ПЕРЕИНУЛ НА КРЕАТ");
+        //System.out.println("ПЕРЕИНУЛ НА КРЕАТ");
         productValidator.validate(product, bindingResult);
         if (bindingResult.hasErrors()) {
             return "/";

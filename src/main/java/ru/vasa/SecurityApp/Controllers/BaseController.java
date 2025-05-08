@@ -12,9 +12,5 @@ public class BaseController {
     public String index() {
         return "hello";
     }
-    @GetMapping("/suppliers")
-    public String suppliers() {
-        return "suppliers";
-    }
 
 }

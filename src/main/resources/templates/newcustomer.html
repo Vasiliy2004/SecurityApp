@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <div th:insert="~{header :: header}"></div>
+    <title>New customer</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+
+</head>
+<body class="bg-light">
+<div class="container">
+    <div class="form-container">
+        <h2 class="form-title">Create New Customer</h2>
+        <form th:method="GET" th:action="@{/customers/new/newcustomer}" th:object="${customer}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Company Name</label>
+                <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Enter company name">
+                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="contact_person" class="form-label">Contact Person</label>
+                <input type="text" class="form-control" th:field="*{contact_person}" id="contact_person" placeholder="Enter contact person name">
+                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('contact_person')}" th:errors="*{contact_person}">Contact person error</div>
+            </div>
+
+            <div class="mb-4">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="text" class="form-control" th:field="*{email}" id="email" placeholder="Enter email address">
+                <div class="invalid-feedback d-block" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary submit-btn">Create Customer</button>
+        </form>
+    </div>
+</div>
+
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

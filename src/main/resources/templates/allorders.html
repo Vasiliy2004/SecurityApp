@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление заказами</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div th:insert="~{header :: header}"></div>
+
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0"><i class="fas fa-clipboard-list me-2"></i>Управление заказами</h2>
+        <form th:method="GET" th:action="@{/orders/new}">
+            <button class="btn btn-primary add-order-btn">
+                <i class="fas fa-plus me-2"></i>Добавить заказ
+            </button>
+        </form>
+    </div>
+
+    <div class="orders-container">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-header">
+                <tr>
+                    <th>ID</th>
+                    <th>Дата заказа</th>
+                    <th>ID клиента</th>
+                    <th>Количество</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.getId()}"></td>
+                    <td th:text="${order.getOrder_date()}"></td>
+                    <td th:text="${order.getCustomer_id()}"></td>
+                    <td th:text="${order.getCount()}"></td>
+                    <td>
+                        <span class="badge bg-secondary">Новый</span>
+                        <!-- Пример статуса (можно динамически менять) -->
+                        <!--
+                        <span th:class="${order.status == 'COMPLETED'} ? 'badge bg-success' :
+                                      ${order.status == 'PENDING'} ? 'badge bg-warning' : 'badge bg-danger'"
+                              th:text="${order.status}">
+                        </span>
+                        -->
+                    </td>
+                    <td>
+                        <div class="d-flex">
+                            <form th:method="GET" th:action="@{/orders/{id}/edit(id=${order.getId()})}">
+                                <button type="submit" class="btn btn-sm btn-warning action-btn" title="Редактировать">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </form>
+                            <form th:method="GET" th:action="@{/orders/{id}/delete(id=${order.getId()})}"
+                                  onsubmit="return confirm('Вы уверены, что хотите удалить этот заказ?');">
+                                <button type="submit" class="btn btn-sm btn-danger action-btn" title="Удалить">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                            <form th:method="GET" th:action="@{/orders/{id}/view(id=${order.getId()})}">
+                                <button type="submit" class="btn btn-sm btn-info action-btn" title="Просмотреть">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
